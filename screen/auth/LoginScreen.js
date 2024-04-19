@@ -12,8 +12,9 @@ const LoginScreen = ({ navigation, route }) => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
   const { initialProps } = route.params;
-  const { isLogin, setIsLogin } = initialProps;
+  const { setIsLogin } = initialProps;
   const handleLogin = () => {
     // Clear previous errors
     setEmailError("");

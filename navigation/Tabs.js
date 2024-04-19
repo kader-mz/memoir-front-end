@@ -4,6 +4,7 @@ import SettingsScreen from "../screen/Home/SettingsScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import DashboardScreen from "../screen/Home/DashboardScreen";
 import CalendarScreen from "../screen/Home/CalendarScreen";
+import TemplateScreen from "../screen/Home/TemplateScreen";
 import WorkScreen from "../screen/Home/WorkScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -36,7 +37,7 @@ const Tabs = () => {
         <Tab.Screen name="dashboard" component={DashboardScreen} />
         <Tab.Screen name="work" component={WorkScreen} />
         <Tab.Screen name="calendar" component={CalendarScreen} />
-        <Tab.Screen name="template" component={SettingsScreen} />
+        <Tab.Screen name="template" component={TemplateScreen} />
         <Tab.Screen name="settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>

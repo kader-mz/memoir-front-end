@@ -43,11 +43,7 @@ export default function SettingsScreen() {
                 style={styles.profileAvatar}
               />
 
-              <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}
-              >
+              <TouchableOpacity>
                 <View style={styles.profileAction}>
                   <FeatherIcon color="#fff" name="edit-3" size={15} />
                 </View>
@@ -83,6 +79,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#40679E",
+    borderRadius: 20,
+    width: "95%",
+    alignSelf: "center",
+    marginTop: 5,
   },
   profileAvatarWrapper: {
     position: "relative",
@@ -107,13 +108,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 19,
     fontWeight: "600",
-    color: "#414d63",
+    color: "white",
     textAlign: "center",
   },
   profileAddress: {
     marginTop: 5,
     fontSize: 16,
-    color: "#989898",
+    color: "white",
     textAlign: "center",
   },
   /** Section */
