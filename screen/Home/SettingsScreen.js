@@ -26,7 +26,9 @@ export default function SettingsScreen() {
   });
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}
+    >
       <View style={styles.container}>
         <View style={styles.profile}>
           <TouchableOpacity

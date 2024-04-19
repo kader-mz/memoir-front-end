@@ -14,7 +14,7 @@ function App() {
     setIsLogin,
   };
   if (isLogin) {
-    return <Tabs />;
+    return <Tabs setIsLogin={setIsLogin} />;
   }
   return (
     <NavigationContainer>

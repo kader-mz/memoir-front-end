@@ -7,9 +7,10 @@ import CalendarScreen from "../screen/Home/CalendarScreen";
 import TemplateScreen from "../screen/Home/TemplateScreen";
 import WorkScreen from "../screen/Home/WorkScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const Tab = createBottomTabNavigator();
-const Tabs = () => {
+const Tabs = ({ setIsLogin }) => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -38,10 +39,33 @@ const Tabs = () => {
         <Tab.Screen name="work" component={WorkScreen} />
         <Tab.Screen name="calendar" component={CalendarScreen} />
         <Tab.Screen name="template" component={TemplateScreen} />
-        <Tab.Screen name="settings" component={SettingsScreen} />
+        <Tab.Screen
+          name="settings"
+          component={SettingsScreen}
+          options={({ navigation }) => ({
+            title: "setting",
+            headerRight: () => (
+              <TouchableOpacity onPress={() => setIsLogin(false)}>
+                <Text style={styles.logoutText}>Logout</Text>
+              </TouchableOpacity>
+            ),
+          })}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  logout: {},
+  logoutText: {
+    color: "white",
+    fontWeight: "bold",
+    marginRight: 10,
+    backgroundColor: "red",
+    padding: 10,
+    borderRadius: 10,
+  },
+});
 
 export default Tabs;
