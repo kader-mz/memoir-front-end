@@ -35,9 +35,9 @@ const Tabs = ({ setIsLogin }) => {
           },
         })}
       >
+        <Tab.Screen name="calendar" component={CalendarScreen} />
         <Tab.Screen name="dashboard" component={DashboardScreen} />
         <Tab.Screen name="work" component={WorkScreen} />
-        <Tab.Screen name="calendar" component={CalendarScreen} />
         <Tab.Screen name="template" component={TemplateScreen} />
         <Tab.Screen
           name="settings"

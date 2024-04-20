@@ -1,12 +1,76 @@
-import { View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Agenda } from "react-native-calendars";
+import AddNewEvent from "../../component/AddNewEvent";
 
-const CalendarScreen = () => {
+function CalendarScreen() {
+  const [isAdding, setIsAdding] = useState(false);
+  const [items, setItems] = useState({
+    "2024-04-20": [
+      {
+        name: "random event",
+        data: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. ",
+      },
+    ],
+  });
   return (
-    <View>
-      <Text>Calendar</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      {isAdding ? (
+        <AddNewEvent setItems={setItems} items={items} />
+      ) : (
+        <Agenda
+          items={items}
+          renderItem={(item, isFirst) => (
+            <TouchableOpacity style={styles.item}>
+              <Text style={styles.itemText}>{item.name}</Text>
+              <Text style={styles.itemText}>{item.data}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      )}
+      <TouchableOpacity
+        style={styles.eventBtn}
+        onPress={() => setIsAdding(!isAdding)}
+      >
+        <Text style={styles.eventBtnText}>{!isAdding ? "ADD" : "BACK"}</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: "relative",
+  },
+  item: {
+    backgroundColor: "lightblue",
+    flex: 1,
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 10,
+    marginTop: 25,
+    paddingBottom: 20,
+  },
+  itemText: {
+    color: "black",
+    fontSize: 16,
+  },
+  eventBtn: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    bottom: 30,
+    right: 20,
+    position: "absolute",
+  },
+  eventBtnText: {
+    padding: 20,
+    backgroundColor: "#5BBCFF",
+    borderRadius: 100,
+    fontWeight: "bold",
+    color: "white",
+  },
+});
 
 export default CalendarScreen;

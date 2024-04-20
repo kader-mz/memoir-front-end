@@ -8,7 +8,7 @@ import { useState } from "react";
 const Stack = createNativeStackNavigator();
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const initialProps = {
     isLogin,
     setIsLogin,
