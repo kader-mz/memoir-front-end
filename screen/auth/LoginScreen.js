@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: "white",
     fontWeight: "bold",
+    pointerEvents: "none",
   },
 });
 

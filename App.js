@@ -23,7 +23,7 @@ function App() {
           headerShown: false,
         }}
       >
-        {/* <Stack.Screen name="welcom" component={WelcomScreen} /> */}
+        <Stack.Screen name="welcom" component={WelcomScreen} />
         <Stack.Screen
           name="login"
           component={LoginScreen}
