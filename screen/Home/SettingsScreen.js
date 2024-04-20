@@ -9,7 +9,7 @@ import {
   SafeAreaView,
   Image,
 } from "react-native";
-
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import UserSetting from "../../component/UserSetting";
 
@@ -24,7 +24,7 @@ export default function SettingsScreen() {
     address: "123 Main St",
     zipCode: "10001",
   });
-
+  const [myDetails, setMyDetails] = useState(false);
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}
@@ -61,7 +61,34 @@ export default function SettingsScreen() {
             </Text>
           </View>
         </View>
-        <UserSetting formData={formData} />
+        {myDetails ? (
+          <UserSetting
+            formData={formData}
+            setFormData={setFormData}
+            setMyDetails={setMyDetails}
+          />
+        ) : (
+          <TouchableOpacity
+            style={styles.settingWrapper}
+            onPress={() => setMyDetails(true)}
+          >
+            <Image
+              source={require("../../assets/setting.png")}
+              style={styles.settingImg}
+            />
+
+            <View style={styles.settingTextContainer}>
+              <Text style={{ fontWeight: "bold", fontSize: 15 }}>General</Text>
+              <Text style={{ fontSize: 12, color: "#9a9a9a" }}>
+                Profile Setting
+              </Text>
+            </View>
+            <Image
+              source={require("../../assets/rightArrow.png")}
+              style={styles.settingImg}
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -73,6 +100,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 0,
+    gap: 20,
   },
   /** Profile */
   profile: {
@@ -129,5 +157,24 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     marginBottom: 10,
+  },
+  settingWrapper: {
+    width: "90%",
+    marginLeft: 20,
+    borderRadius: 10,
+    height: "10%",
+    padding: 20,
+    backgroundColor: "#eee",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  settingImg: {
+    width: 25,
+    height: 25,
+  },
+  settingTextContainer: {
+    flexDirection: "column",
+    marginRight: 110,
   },
 });

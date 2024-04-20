@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-const handleInputChange = (field, value) => {
-  setFormData({
-    ...formData,
-    [field]: value,
-  });
-};
-const UserSetting = ({ formData }) => {
+const UserSetting = ({ formData, setMyDetails, setFormData }) => {
+  const handleInputChange = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value,
+    });
+  };
   return (
     <>
       <ScrollView style={styles.formSettingContainer}>
@@ -21,7 +21,6 @@ const UserSetting = ({ formData }) => {
           <View style={styles.inputContainer}>
             <Text style={styles.text}>first name</Text>
             <TextInput
-              readOnly
               label="First Name"
               style={styles.settingInput}
               value={formData.firstName}
@@ -35,7 +34,6 @@ const UserSetting = ({ formData }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.text}>last name</Text>
           <TextInput
-            readOnly
             label="Last Name"
             style={styles.settingInput}
             value={formData.lastName}
@@ -46,7 +44,6 @@ const UserSetting = ({ formData }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.text}>email</Text>
           <TextInput
-            readOnly
             label="Email"
             style={styles.settingInput}
             value={formData.email}
@@ -56,7 +53,6 @@ const UserSetting = ({ formData }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.text}>phone number</Text>
           <TextInput
-            readOnly
             label="Phone Number"
             style={styles.settingInput}
             value={formData.phoneNumber}
@@ -68,7 +64,6 @@ const UserSetting = ({ formData }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.text}>address</Text>
           <TextInput
-            readOnly
             label="Country"
             style={styles.settingInput}
             value={formData.country}
@@ -78,7 +73,6 @@ const UserSetting = ({ formData }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.text}>city</Text>
           <TextInput
-            readOnly
             label="City"
             style={styles.settingInput}
             value={formData.city}
@@ -88,7 +82,6 @@ const UserSetting = ({ formData }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.text}>address</Text>
           <TextInput
-            readOnly
             label="Address"
             style={styles.settingInput}
             value={formData.address}
@@ -98,7 +91,6 @@ const UserSetting = ({ formData }) => {
         <View style={styles.inputContainer}>
           <Text style={styles.text}>zip code</Text>
           <TextInput
-            readOnly
             label="Zip Code"
             style={styles.settingInput}
             value={formData.zipCode}
@@ -110,6 +102,7 @@ const UserSetting = ({ formData }) => {
             <Text style={styles.saveBtnText}>Save Changes</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => setMyDetails(false)}
             style={[styles.saveBtn, { backgroundColor: "#ffd27f" }]}
           >
             <Text style={styles.saveBtnText}>Back</Text>

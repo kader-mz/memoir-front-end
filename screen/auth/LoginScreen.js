@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  Image,
 } from "react-native";
 
 const LoginScreen = ({ navigation, route }) => {
@@ -47,7 +48,29 @@ const LoginScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Image source={require("../../assets/avatar.png")} style={styles.image} />
+      <View style={styles.header}>
+        <Text
+          style={{
+            fontSize: 35,
+            fontWeight: "bold",
+            textAlign: "center",
+            marginTop: 20,
+          }}
+        >
+          Welcom back
+        </Text>
+        <Text
+          style={{
+            color: "#9a9a9a",
+            fontSize: 18,
+            textAlign: "center",
+            marginBottom: 30,
+          }}
+        >
+          Sign to continue
+        </Text>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -66,32 +89,36 @@ const LoginScreen = ({ navigation, route }) => {
           setPasswordError("");
         }}
       />
+      <TouchableOpacity
+        onPress={handleForgotPassword}
+        style={{ width: "100%" }}
+      >
+        <Text style={styles.footerText}>Forgot Password?</Text>
+      </TouchableOpacity>
       {passwordError ? <Text style={styles.error}>{passwordError}</Text> : null}
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => setIsLogin(true)}>
-        <Text style={styles.buttonText}>Guest ?</Text>
-      </TouchableOpacity>
-
-      <View style={styles.footer}>
+      <View style={styles.signup}>
+        <Text>Don't have an account?</Text>
         <TouchableOpacity onPress={handleSignup}>
-          <Text style={styles.footerText}>Sign up</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleForgotPassword}>
-          <Text style={styles.footerText}>Forgot Password?</Text>
+          <Text style={styles.sinuptext}>Create a new account</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity onPress={() => setIsLogin(true)}>
+        <Text style={styles.gest}>Guest?</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    position: "relative",
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "white",
   },
   title: {
@@ -101,16 +128,17 @@ const styles = StyleSheet.create({
   },
   input: {
     width: "80%",
-    height: 40,
-    borderColor: "gray",
+    height: 60,
+    borderRadius: 10,
+    borderColor: "#e9e9e9",
+    color: "#1aff01",
     borderWidth: 1,
-    borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
   },
   button: {
-    backgroundColor: "blue",
-    padding: 10,
+    backgroundColor: "#1aff01",
+    padding: 20,
     borderRadius: 5,
     marginTop: 10,
     width: "80%",
@@ -127,12 +155,49 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   footerText: {
-    color: "blue",
+    color: "#1aff01",
     fontWeight: "bold",
+    alignItems: "flex-end",
+    width: "90%",
+    textAlign: "right",
   },
   error: {
     color: "red",
     marginBottom: 5,
+  },
+  header: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  title: {
+    textAlign: "center",
+  },
+  image: {
+    width: 150,
+    height: 150,
+    borderRadius: 100,
+  },
+  signup: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 5,
+    marginVertical: 30,
+  },
+  sinuptext: {
+    color: "#1aff01",
+  },
+  gest: {
+    position: "absolute",
+    top: 20,
+    right: 100,
+    backgroundColor: "red",
+    padding: 10,
+    alignContent: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    color: "white",
+    fontWeight: "bold",
   },
 });
 
