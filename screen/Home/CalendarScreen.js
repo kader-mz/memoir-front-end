@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Agenda } from "react-native-calendars";
-import AddNewEvent from "../../component/AddNewEvent";
 
 function CalendarScreen() {
-  const [isAdding, setIsAdding] = useState(false);
   const [items, setItems] = useState({
     "2024-04-20": [
       {
@@ -15,24 +13,18 @@ function CalendarScreen() {
   });
   return (
     <SafeAreaView style={styles.container}>
-      {isAdding ? (
-        <AddNewEvent setItems={setItems} items={items} />
-      ) : (
-        <Agenda
-          items={items}
-          renderItem={(item, isFirst) => (
-            <TouchableOpacity style={styles.item}>
-              <Text style={styles.itemText}>{item.name}</Text>
-              <Text style={styles.itemText}>{item.data}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      )}
-      <TouchableOpacity
-        style={styles.eventBtn}
-        onPress={() => setIsAdding(!isAdding)}
-      >
-        <Text style={styles.eventBtnText}>{!isAdding ? "ADD" : "BACK"}</Text>
+      <Agenda
+        items={items}
+        renderItem={(item, isFirst) => (
+          <TouchableOpacity style={styles.item}>
+            <Text style={styles.itemText}>{item.name}</Text>
+            <Text style={styles.itemText}>{item.data}</Text>
+          </TouchableOpacity>
+        )}
+      />
+
+      <TouchableOpacity style={styles.eventBtn}>
+        <Text style={styles.eventBtnText}>BACK</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
