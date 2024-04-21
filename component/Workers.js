@@ -28,9 +28,8 @@ const Workers = () => {
       </View>
       <FlatList
         data={workers}
-        renderItem={(item) => (
-          <SendWorker email={item.email} role={item.role} />
-        )}
+        keyExtractor={(item) => item.id}
+        renderItem={(item) => <SendWorker {...item} />}
       />
       {/* <View style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder="To:email" />
