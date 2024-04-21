@@ -1,6 +1,7 @@
 import {
   FlatList,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -9,28 +10,44 @@ import {
 } from "react-native";
 import SendWorker from "./SendWorker";
 import { useState } from "react";
-
+import uuid from "react-native-uuid";
 const Workers = () => {
   const [workers, setWorkers] = useState([
     {
-      id: 1,
+      id: uuid.v4(),
       email: "kader@gmail.com",
       role: "nazra3",
     },
   ]);
+
+  const addNewWorker = () => {
+    const newWorker = {
+      id: uuid.v4(),
+      email: "",
+      role: "",
+    };
+    setWorkers([...workers, newWorker]);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.workersText}>Workers</Text>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={() => addNewWorker()}>
           <Image source={require("../assets/plus.png")} style={styles.image} />
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={workers}
-        keyExtractor={(item) => item.id}
-        renderItem={(item) => <SendWorker {...item} />}
-      />
+      <ScrollView>
+        {workers.map((item) => {
+          return (
+            <SendWorker
+              key={item.id}
+              {...item}
+              workers={workers}
+              setWorkers={setWorkers}
+            />
+          );
+        })}
+      </ScrollView>
     </View>
   );
 };
