@@ -31,13 +31,6 @@ const Workers = () => {
         keyExtractor={(item) => item.id}
         renderItem={(item) => <SendWorker {...item} />}
       />
-      {/* <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="To:email" />
-        <TextInput style={styles.input} placeholder="Role" />
-        <TouchableOpacity style={styles.sendBtn}>
-          <Text style={styles.sendBtnText}>SEND</Text>
-        </TouchableOpacity>
-      </View> */}
     </View>
   );
 };
