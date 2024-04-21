@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import React from "react";
 import Workers from "../../component/Workers";
+import { useGlobalContext } from "../../contextapi/useGlobalContext";
 
 const DashboardScreen = () => {
   return (

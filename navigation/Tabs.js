@@ -8,9 +8,11 @@ import TemplateScreen from "../screen/Home/TemplateScreen";
 import WorkScreen from "../screen/Home/WorkScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useGlobalContext } from "../contextapi/useGlobalContext";
 
 const Tab = createBottomTabNavigator();
-const Tabs = ({ setIsLogin }) => {
+const Tabs = () => {
+  const { setIsLogin } = useGlobalContext();
   return (
     <NavigationContainer>
       <Tab.Navigator

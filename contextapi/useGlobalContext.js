@@ -1,12 +1,20 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { createContext, useContext, useState } from "react";
 
-const useGlobalContext = () => {
+const appContext = createContext();
+
+export const AppProvider = ({ children }) => {
+  const [isLogin, setIsLogin] = useState(false);
   return (
-    <View>
-      <Text>useGlobalContext</Text>
-    </View>
+    <appContext.Provider
+      value={{
+        isLogin,
+        setIsLogin,
+      }}
+    >
+      {children}
+    </appContext.Provider>
   );
 };
 
-export default useGlobalContext;
+export const useGlobalContext = () => useContext(appContext);

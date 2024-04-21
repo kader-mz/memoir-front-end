@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
+import { useGlobalContext } from "../../contextapi/useGlobalContext";
 
 const LoginScreen = ({ navigation, route }) => {
   const [email, setEmail] = useState("");
@@ -14,8 +15,7 @@ const LoginScreen = ({ navigation, route }) => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const { initialProps } = route.params;
-  const { setIsLogin } = initialProps;
+  const { setIsLogin } = useGlobalContext();
   const handleLogin = () => {
     // Clear previous errors
     setEmailError("");

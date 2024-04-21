@@ -3,6 +3,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import COLORS from "../../constants/colors";
 import Button from "../../component/Button";
+import { useGlobalContext } from "../../contextapi/useGlobalContext";
 const WelcomScreen = ({ navigation }) => {
   return (
     <LinearGradient
