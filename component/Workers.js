@@ -47,6 +47,7 @@ const Workers = () => {
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
     padding: 20,
     gap: 20,
   },

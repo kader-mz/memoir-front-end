@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -15,16 +16,38 @@ const SendWorker = ({ id, email, role, workers, setWorkers }) => {
   });
 
   const handleWorkerSend = () => {
-    setSendWorker(!sendWorker);
+    setSendWorker(true);
     workers.find((item) => {
       if (item.id === id) {
         item.email = workerInfo.email;
         item.role = workerInfo.role;
       }
     });
+    setWorkers([...workers]);
+  };
+
+  const handleDeleteWorker = (id) => {
+    const newWorkerList = workers.filter((item) => item.id !== id);
+    setWorkers([...newWorkerList]);
   };
   return (
     <View style={styles.inputContainer}>
+      {sendWorker && (
+        <View style={styles.workerEdit}>
+          <TouchableOpacity onPress={() => setSendWorker(false)}>
+            <Image
+              source={require("../assets/mod.png")}
+              style={styles.editBtn}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleDeleteWorker(id)}>
+            <Image
+              source={require("../assets/delete.png")}
+              style={styles.editBtn}
+            />
+          </TouchableOpacity>
+        </View>
+      )}
       <TextInput
         style={styles.input}
         value={workerInfo.email}
@@ -43,29 +66,34 @@ const SendWorker = ({ id, email, role, workers, setWorkers }) => {
           setWorkerInfo({ ...workerInfo, role: e.nativeEvent.text })
         }
       />
-      <TouchableOpacity
-        style={[
-          styles.sendBtn,
-          { backgroundColor: sendWorker ? "red" : "green" },
-        ]}
-        onPress={() => handleWorkerSend()}
-      >
-        <Text style={styles.sendBtnText}>{sendWorker ? "UNSEND" : "SEND"}</Text>
-      </TouchableOpacity>
+      {!sendWorker && (
+        <TouchableOpacity
+          style={styles.sendBtn}
+          onPress={() => handleWorkerSend()}
+        >
+          <Text style={styles.sendBtnText}>SEND</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
+    position: "relative",
     alignItems: "center",
     justifyContent: "space-between",
     borderColor: "red",
+    backgroundColor: "#eee",
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 10,
   },
   input: {
     width: "100%",
     borderWidth: 1,
-    borderColor: "#eee",
+    borderRadius: 10,
+    borderColor: "black",
     padding: 10,
     marginTop: 10,
   },
@@ -76,11 +104,22 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "green",
   },
   sendBtnText: {
     fontSize: 16,
     fontWeight: "bold",
     color: "white",
+  },
+  workerEdit: {
+    width: "100%",
+    flexDirection: "row",
+    gap: 20,
+    justifyContent: "flex-end",
+  },
+  editBtn: {
+    width: 25,
+    height: 25,
   },
 });
 export default SendWorker;

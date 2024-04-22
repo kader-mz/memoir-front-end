@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     width: "90%",
     backgroundColor: "#333",
     borderRadius: 8,
-    marginTop: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 200,
+    height: 150,
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
