@@ -1,10 +1,8 @@
 import {
-  FlatList,
   Image,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -54,6 +52,7 @@ const Workers = () => {
 
 const styles = StyleSheet.create({
   container: {
+    position: "relative",
     padding: 20,
     gap: 20,
   },

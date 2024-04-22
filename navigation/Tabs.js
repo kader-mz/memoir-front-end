@@ -12,7 +12,20 @@ import { useGlobalContext } from "../contextapi/useGlobalContext";
 
 const Tab = createBottomTabNavigator();
 const Tabs = () => {
-  const { setIsLogin } = useGlobalContext();
+  const {
+    setIsLogin,
+    setShowWorkersList,
+    showWorkersList,
+    showNotesList,
+    setShowNotesList,
+  } = useGlobalContext();
+  const handlePress = () => {
+    if (showWorkersList || showNotesList) {
+      setShowWorkersList(false);
+      setShowNotesList(false);
+    }
+  };
+  console.log(showNotesList, showWorkersList);
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -37,7 +50,25 @@ const Tabs = () => {
           },
         })}
       >
-        <Tab.Screen name="dashboard" component={DashboardScreen} />
+        <Tab.Screen
+          name="dashboard"
+          component={DashboardScreen}
+          options={({ navigation }) => ({
+            title: "dashboard",
+            headerRight: () => {
+              return (
+                showWorkersList && (
+                  <TouchableOpacity
+                    style={styles.backBtn}
+                    onPress={() => handlePress()}
+                  >
+                    <Text style={styles.backBtnText}>Back</Text>
+                  </TouchableOpacity>
+                )
+              );
+            },
+          })}
+        />
         <Tab.Screen name="work" component={WorkScreen} />
         <Tab.Screen name="calendar" component={CalendarScreen} />
         <Tab.Screen name="template" component={TemplateScreen} />
@@ -67,6 +98,19 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     padding: 10,
     borderRadius: 10,
+  },
+  backBtn: {
+    backgroundColor: "#3d85c6",
+    padding: 10,
+    marginRight: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    right: 0,
+  },
+  backBtnText: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
 
