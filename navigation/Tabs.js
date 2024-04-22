@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   backBtn: {
-    backgroundColor: "#3d85c6",
+    backgroundColor: "#213555",
     padding: 10,
     marginRight: 20,
     justifyContent: "center",

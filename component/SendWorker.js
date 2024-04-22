@@ -53,6 +53,7 @@ const SendWorker = ({ id, email, role, workers, setWorkers }) => {
         value={workerInfo.email}
         placeholder="Please add email"
         readOnly={sendWorker}
+        placeholderTextColor="white"
         onChange={(e) =>
           setWorkerInfo({ ...workerInfo, email: e.nativeEvent.text })
         }
@@ -62,6 +63,7 @@ const SendWorker = ({ id, email, role, workers, setWorkers }) => {
         value={workerInfo.role}
         readOnly={sendWorker}
         placeholder="Please add role"
+        placeholderTextColor="white"
         onChange={(e) =>
           setWorkerInfo({ ...workerInfo, role: e.nativeEvent.text })
         }
@@ -84,18 +86,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     borderColor: "red",
-    backgroundColor: "#eee",
+    backgroundColor: "#213555",
     borderRadius: 10,
     padding: 10,
     marginBottom: 10,
+    gap: 10,
   },
   input: {
     width: "100%",
     borderWidth: 1,
     borderRadius: 10,
-    borderColor: "black",
+    borderColor: "white",
+    color: "white",
     padding: 10,
-    marginTop: 10,
   },
   sendBtn: {
     marginTop: 10,

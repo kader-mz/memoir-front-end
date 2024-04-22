@@ -12,6 +12,7 @@ import Workers from "../../component/Workers";
 import workerImage from "../../assets/worker.jpg";
 import notesImage from "../../assets/notes.png";
 import { useGlobalContext } from "../../contextapi/useGlobalContext";
+import AddTask from "../../component/AddTask";
 
 const DashboardScreen = () => {
   const {
@@ -39,6 +40,8 @@ const DashboardScreen = () => {
             title="Tasks and notes"
             description=""
             btnText="See tasks and notes"
+            setShowWorkersList={setShowWorkersList}
+            setShowNotesList={setShowNotesList}
           />
         </View>
       )}
@@ -47,6 +50,7 @@ const DashboardScreen = () => {
           <Workers />
         </View>
       )}
+      {showNotesList && <AddTask />}
     </SafeAreaView>
   );
 };
