@@ -10,13 +10,7 @@ import SendWorker from "./SendWorker";
 import { useState } from "react";
 import uuid from "react-native-uuid";
 const Workers = () => {
-  const [workers, setWorkers] = useState([
-    {
-      id: uuid.v4(),
-      email: "kader@gmail.com",
-      role: "nazra3",
-    },
-  ]);
+  const [workers, setWorkers] = useState([]);
 
   const addNewWorker = () => {
     const newWorker = {
@@ -26,6 +20,7 @@ const Workers = () => {
     };
     setWorkers([...workers, newWorker]);
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -52,7 +47,6 @@ const Workers = () => {
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
     padding: 20,
     gap: 20,
   },

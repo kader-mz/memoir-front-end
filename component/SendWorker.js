@@ -28,6 +28,7 @@ const SendWorker = ({ id, email, role, workers, setWorkers }) => {
       <TextInput
         style={styles.input}
         value={workerInfo.email}
+        placeholder="Please add email"
         readOnly={sendWorker}
         onChange={(e) =>
           setWorkerInfo({ ...workerInfo, email: e.nativeEvent.text })
@@ -37,6 +38,7 @@ const SendWorker = ({ id, email, role, workers, setWorkers }) => {
         style={styles.input}
         value={workerInfo.role}
         readOnly={sendWorker}
+        placeholder="Please add role"
         onChange={(e) =>
           setWorkerInfo({ ...workerInfo, role: e.nativeEvent.text })
         }

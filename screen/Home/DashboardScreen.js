@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   safeAreaStyle: {
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     alignItems: "center",
     flex: 1,
     backgroundColor: "white",

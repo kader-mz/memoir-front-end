@@ -25,7 +25,6 @@ const Tabs = () => {
       setShowNotesList(false);
     }
   };
-  console.log(showNotesList, showWorkersList);
   return (
     <NavigationContainer>
       <Tab.Navigator
