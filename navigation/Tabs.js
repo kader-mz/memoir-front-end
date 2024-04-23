@@ -56,7 +56,7 @@ const Tabs = () => {
             title: "dashboard",
             headerRight: () => {
               return (
-                showWorkersList && (
+                (showWorkersList || showNotesList) && (
                   <TouchableOpacity
                     style={styles.backBtn}
                     onPress={() => handlePress()}
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   backBtn: {
-    backgroundColor: "#213555",
+    backgroundColor: "  ",
     padding: 10,
     marginRight: 20,
     justifyContent: "center",

@@ -35,7 +35,7 @@ const AddTask = () => {
 
       {!addingNewTask && (
         <View style={styles.noteContainer}>
-          {noteList.map((item) => {
+          {noteList?.map((item) => {
             return (
               <SingleTask
                 noteList={noteList}
@@ -47,7 +47,14 @@ const AddTask = () => {
           })}
         </View>
       )}
-      {addingNewTask && <AddNewTask />}
+
+      {addingNewTask && (
+        <AddNewTask
+          noteList={noteList}
+          setNoteList={setNoteList}
+          setAddNewTask={setAddNewTask}
+        />
+      )}
     </View>
   );
 };

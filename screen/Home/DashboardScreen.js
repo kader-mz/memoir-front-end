@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, SafeAreaView, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import Card from "../../component/Card";
 import Workers from "../../component/Workers";
@@ -59,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     gap: 10,
   },
