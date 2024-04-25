@@ -1,3 +1,4 @@
+import { Picker } from "@react-native-picker/picker";
 import { useState } from "react";
 import {
   Image,
@@ -58,16 +59,12 @@ const SendWorker = ({ id, email, role, workers, setWorkers }) => {
           setWorkerInfo({ ...workerInfo, email: e.nativeEvent.text })
         }
       />
-      <TextInput
-        style={styles.input}
-        value={workerInfo.role}
-        readOnly={sendWorker}
-        placeholder="Please add role"
-        placeholderTextColor="white"
-        onChange={(e) =>
-          setWorkerInfo({ ...workerInfo, role: e.nativeEvent.text })
-        }
-      />
+      <Picker style={styles.picker}>
+        <Picker.Item label="verifcation" value="java" />
+        <Picker.Item label="JavaScript" value="js" />
+        <Picker.Item label="Python" value="python" />
+        <Picker.Item label="C#" value="csharp" />
+      </Picker>
       {!sendWorker && (
         <TouchableOpacity
           style={styles.sendBtn}
@@ -86,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     borderColor: "red",
-    backgroundColor: "#213555",
+    backgroundColor: "#1679AB",
     borderRadius: 10,
     padding: 10,
     marginBottom: 10,
@@ -123,6 +120,14 @@ const styles = StyleSheet.create({
   editBtn: {
     width: 25,
     height: 25,
+  },
+  picker: {
+    width: "100%",
+    backgroundColor: "grey",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "gray",
+    color: "white",
   },
 });
 export default SendWorker;

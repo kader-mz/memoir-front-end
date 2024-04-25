@@ -39,7 +39,7 @@ const Tabs = () => {
               iconName = focused ? "settings" : "settings-outline";
             } else if (route.name === "calendar") {
               iconName = focused ? "calendar" : "calendar-outline";
-            } else if (route.name === "work") {
+            } else if (route.name === "notification") {
               iconName = focused ? "briefcase" : "briefcase-outline";
             } else if (route.name === "template") {
               iconName = focused ? "document-text" : "document-text-outline";
@@ -68,9 +68,9 @@ const Tabs = () => {
             },
           })}
         />
-        <Tab.Screen name="work" component={WorkScreen} />
-        <Tab.Screen name="calendar" component={CalendarScreen} />
         <Tab.Screen name="template" component={TemplateScreen} />
+        <Tab.Screen name="calendar" component={CalendarScreen} />
+        <Tab.Screen name="notification" component={WorkScreen} />
         <Tab.Screen
           name="settings"
           component={SettingsScreen}

@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import Card from "../../component/Card";
 import Workers from "../../component/Workers";
 import workerImage from "../../assets/worker.jpg";
@@ -17,7 +17,7 @@ const DashboardScreen = () => {
 
   return (
     <SafeAreaView style={styles.safeAreaStyle}>
-      {!showNotesList && !showWorkersList && (
+      {/* {!showNotesList && !showWorkersList && (
         <View style={styles.container}>
           <Card
             workerImage={workerImage}
@@ -27,22 +27,14 @@ const DashboardScreen = () => {
             setShowWorkersList={setShowWorkersList}
             setShowNotesList={setShowNotesList}
           />
-
-          <Card
-            workerImage={notesImage}
-            title="Tasks and notes"
-            description=""
-            btnText="See tasks and notes"
-            setShowWorkersList={setShowWorkersList}
-            setShowNotesList={setShowNotesList}
-          />
         </View>
-      )}
-      {showWorkersList && (
+      )} */}
+      {/* {showWorkersList && (
         <View style={styles.workerContainer}>
           <Workers />
         </View>
-      )}
+      )} */}
+      <Workers />
       {showNotesList && <AddTask />}
     </SafeAreaView>
   );
@@ -52,8 +44,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    justifyContent: "flex-start",
-    alignItems: "center",
     gap: 10,
   },
   workerContainer: {
