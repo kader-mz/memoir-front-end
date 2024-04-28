@@ -4,7 +4,7 @@ import { Agenda } from "react-native-calendars";
 
 function CalendarScreen() {
   const [items, setItems] = useState({
-    "2024-04-20": [
+    "2024-04-28": [
       {
         name: "random event",
         data: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. ",

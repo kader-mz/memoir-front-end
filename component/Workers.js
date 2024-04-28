@@ -25,9 +25,9 @@ const Workers = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.workersText}>Workers</Text>
-        <TouchableOpacity style={styles.btn} onPress={() => addNewWorker()}>
+        {/* <TouchableOpacity style={styles.btn} onPress={() => addNewWorker()}>
           <Image source={require("../assets/plus.png")} style={styles.image} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <ScrollView>
         {workers.map((item) => {
@@ -41,6 +41,10 @@ const Workers = () => {
           );
         })}
       </ScrollView>
+
+      <TouchableOpacity style={styles.btn} onPress={() => addNewWorker()}>
+        <Image source={require("../assets/plus.png")} style={styles.image} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -63,6 +67,14 @@ const styles = StyleSheet.create({
   image: {
     width: 25,
     height: 25,
+  },
+  btn: {
+    position: "absolute",
+    bottom: 30,
+    right: 30,
+    backgroundColor: "green",
+    padding: 20,
+    borderRadius: 100,
   },
 });
 
