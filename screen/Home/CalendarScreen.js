@@ -1,18 +1,56 @@
-import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  Modal,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Agenda } from "react-native-calendars";
+import AddDate from "../../component/AddDate";
 
 function CalendarScreen() {
-  const [items, setItems] = useState({
-    "2024-04-28": [
-      {
-        name: "random event",
-        data: "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. ",
-      },
-    ],
-  });
+  const [items, setItems] = useState(null); // Initialize items state as null
+
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    loadItemsFromFile();
+  }, []);
+
+  const loadItemsFromFile = async () => {
+    try {
+      const filePath = FileSystem.documentDirectory + "calendarData.json";
+      const fileContent = await FileSystem.readAsStringAsync(filePath);
+      const jsonData = JSON.parse(fileContent);
+      // Update the items state with the loaded data
+      setItems(jsonData);
+      console.log("JSON file has been loaded successfully");
+    } catch (error) {
+      console.error("Error reading JSON file:", error);
+      Alert.alert("Error", "Failed to read JSON file");
+    }
+  };
+
+  const addEvent = (newEvent) => {
+    setItems((prevItems) => ({
+      ...prevItems,
+      [newEvent.date]: [...(prevItems[newEvent.date] || []), newEvent],
+    }));
+    setShowModal(false);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
+      <Modal animationType="fade" transparent={true} visible={showModal}>
+        <AddDate
+          items={items}
+          addEvent={addEvent}
+          setShowModal={setShowModal}
+        />
+      </Modal>
       <Agenda
         items={items}
         renderItem={(item, isFirst) => (
@@ -23,8 +61,11 @@ function CalendarScreen() {
         )}
       />
 
-      <TouchableOpacity style={styles.eventBtn}>
-        <Text style={styles.eventBtnText}>BACK</Text>
+      <TouchableOpacity
+        style={styles.eventBtn}
+        onPress={() => setShowModal(true)}
+      >
+        <Text style={styles.eventBtnText}>Add</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -62,6 +103,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     fontWeight: "bold",
     color: "white",
+  },
+  dateContainer: {
+    backgroundColor: "white",
+    flex: 1,
   },
 });
 
